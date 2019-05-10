@@ -97,3 +97,18 @@ SELECT users.name,users.last_name,
 tasks.tasks, tasks.time_set, tasks.ranking
 FROM users,tasks
 WHERE  users.id =2;
+
+
+ALTER TABLE users
+ADD auth0_id varchar(50);
+
+
+CREATE TABLE users(
+id SERIAL PRIMARY KEY,
+name VARCHAR(15),
+last_name VARCHAR(15),
+email VARCHAR(50),
+auth0_id text NOT NULL UNIQUE
+);
+
+DROP TABLE users;

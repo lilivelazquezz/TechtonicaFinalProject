@@ -11,7 +11,7 @@ class TasksForm extends React.Component {
         return (
             <div>
                 <h1>Tasks</h1>
-                <NewTaskForm createTask={this.create} />
+                <NewTaskForm addTask={this.props.addTask} />
                 {tasks.map(task => { return <Task data={task} key={task.id} /> })}
                 <Link to="/dashboard">DONE</Link>
             </div>

@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 3000; // <- change port here
+const PORT = 4000; // <- change port here
 
 app.use(express.json());
 
@@ -50,14 +50,23 @@ app.post('/users', async (req, res) => {
     let AsName = req.body.name;
     let AsLastName = req.body.last_name;
     let AsEmail = req.body.email;
+    let AsAuth0 = req.body.auth0_id;
 
-    //updateInfo
-    var usersResults = await client.query("INSERT INTO users(name, last_name, email) VALUES($1, $2, $3) RETURNING *", [AsName, AsLastName, AsEmail]);
-    res.json(usersResults.rows[0]);
-    // closed pool
-    client.release();
-});
+    var existingUser = await client.query("SELECT * FROM users WHERE auth0_id=$1", [AsAuth0]);
+    if (existingUser.rows && existingUser.rows.length > 0) {
+        // This is an existing user.
+        res.json(existingUser.rows[0]);
+        // closed pool
+        client.release();
+    } else {
+        //updateInfo
+        var usersResults = await client.query("INSERT INTO users(name, last_name, email, auth0_id) VALUES($1, $2, $3, $4) RETURNING *", [AsName, AsLastName, AsEmail, AsAuth0]);
+        res.json(usersResults.rows[0]);
+        // closed pool
+        client.release();
+    }
 
+}); // SELECT users WHERE auth0_id = AsAuth0
 /* ====== PUT ======  */
 
 app.put('/users/:id', async (req, res) => {
@@ -66,8 +75,9 @@ app.put('/users/:id', async (req, res) => {
     let AsName = req.body.name;
     let AsLastName = req.body.last_name;
     let AsEmail = req.body.email;
+    let AsAuth0 = req.body.auth0_id;
     //updateInfo
-    var usersResults = await client.query("UPDATE users SET name=$1, last_name=$2, email=$3 WHERE id=$4 RETURNING *", [AsName, AsLastName, AsEmail, req.params.id]);
+    var usersResults = await client.query("UPDATE users SET name=$1, last_name=$2, email=$3 WHERE id=$4 RETURNING *", [AsName, AsLastName, AsEmail, AsAuth0, req.params.id]);
     res.json(usersResults.rows[0]);
     // closed pool
     client.release();
@@ -122,13 +132,14 @@ app.post('/tasks', async (req, res) => {
     // open pool
     const client = await pool.connect();
     let AsTasks = req.body.tasks;
-    let AsTimeSet = req.body.time_set;
-    let AsRanking = req.body.ranking;
-    let AsUsersId = req.body.users_id;
+    let AsTimeSet = `00:${req.body.time_set}:00`;
+    let AsRanking = parseInt(req.body.ranking);
+    let AsAuthId = req.body.auth0_id;
 
     //updateInfo
-    var usersResults = await client.query("INSERT INTO tasks(tasks, time_set, ranking, users_id) VALUES($1, $2, $3, $4) RETURNING *", [AsTasks, AsTimeSet, AsRanking, AsUsersId]);
-    res.json(usersResults.rows[0]);
+    var usersResults = await client.query("SELECT id FROM users WHERE auth0_id = $1", [AsAuthId]);
+    var tasksResults = await client.query("INSERT INTO tasks(tasks, time_set, ranking, users_id) VALUES($1, $2, $3, $4) RETURNING *", [AsTasks, AsTimeSet, AsRanking, usersResults.rows[0].id]);
+    res.json(tasksResults.rows[0]);
     // closed pool
     client.release();
 });
