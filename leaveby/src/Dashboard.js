@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
             <div>
                 <h2>DASHBOARD</h2>
                 <p> Hello {this.props.name}</p>
-                {tasks.map(task => { return <FinalTasksData data={task} key={task.id} /> })}
+                {tasks.map(task => { return <FinalTasksData data={task} parse="hh:mm" format="mma" key={task.id} /> })}
                 <Link to="/report">Reports</Link>
                 <Link to="/tasksForm">Edit</Link>
                 {this.renderStartButton()}

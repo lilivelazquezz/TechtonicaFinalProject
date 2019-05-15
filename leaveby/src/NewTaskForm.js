@@ -17,7 +17,7 @@ class NewTaskForm extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         if (this.state.id) {
-            this.props.updateEvent(this.state); // check with thee other form  updateEvent
+            this.props.updateTask(this.state); // check with thee other form  updateEvent
         } else {
             this.props.addTask(this.state); // AddItem
         }

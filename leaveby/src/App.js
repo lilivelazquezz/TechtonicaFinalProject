@@ -8,7 +8,6 @@ import Callback from './components/Callback';
 import AlarmScreen from './AlarmScreen';
 import Dashboard from './Dashboard';
 import Report from './Report';
-import Results from './Results';
 import TaskScreen from './TaskScreen';
 import TasksForm from './TasksForm';
 import NewTaskForm from './NewTaskForm';
@@ -30,6 +29,7 @@ class App extends React.Component {
       auth
     }
     this.addTask = this.addTask.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
 
   componentDidMount() {
@@ -71,7 +71,7 @@ class App extends React.Component {
           });
         }
       )
-    // console.log(this.state.results)
+    console.log(this.state.results)
 
     fetch(APIURL2)
       .then(res => res.json())
@@ -109,6 +109,20 @@ class App extends React.Component {
         this.setState({ tasks: [...this.state.tasks, newTask] })
       })
   }
+
+  deleteTask(id) {
+    const deleteURL = APIURL2 + id;
+    console.log(deleteURL)
+    fetch(deleteURL, {
+      method: 'delete'
+    })
+      .then(res => res.json())
+      .then(() => {
+        const tasks = this.state.tasks.filter(tasks => tasks.id !== id)
+        this.setState({ tasks: tasks });
+      });
+  }
+
   // console.log(this.state.results)
   render() {
     return (
@@ -160,27 +174,33 @@ class App extends React.Component {
             tasks={this.state.tasks}
             {...this.props}
             addTask={this.addTask}
+            deleteTask={this.deleteTask}
+
           />
           <PrivateRoute
             path="/report"
             component={Report}
             auth={this.props.auth}
             tasks={this.state.tasks}
+            results={this.state.results}
             {...this.props}
           />
-          <PrivateRoute
-            path="/results"
-            component={Results}
-            auth={this.props.auth}
-            tasks={this.state.tasks}
-            {...this.props}
-          />
+
           <PrivateRoute
             path="/newtaksform"
             component={NewTaskForm}
             auth={this.props.auth}
             tasks={this.state.tasks}
             {...this.props}
+          />
+
+          <PrivateRoute
+            path="/task"
+            component={Report}
+            auth={this.props.auth}
+            tasks={this.state.tasks}
+            {...this.props}
+            deleteTask={this.deleteTask}
           />
         </Switch>
       </Router>

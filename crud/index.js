@@ -175,7 +175,7 @@ app.delete('/tasks/:id', async (req, res) => {
 
 
 /* ====== RESULTS TABLE ====== */
-/* ====== GET ======  */
+/* ====== GET  ======  */
 
 app.get('/results', async (req, res) => {
     // open pool
@@ -185,6 +185,22 @@ app.get('/results', async (req, res) => {
         ("SELECT * FROM results");
     //query to database
     res.json(allResults.rows);
+    // closed pool
+    client.release();
+});
+
+/* ====== GET By user ID ======  */
+
+app.get('/results/:users_id', async (req, res) => {
+    // open pool
+    const client = await pool.connect();
+    //console.log("results");
+    //save results of the query
+    var allResults = await client.query('SELECT U.id, R.id, T.tasks, T.users_id, R.total_time FROM users U JOIN tasks T ON T.users_id = U.id JOIN results R ON R.tasks_id = T.id WHERE users_id=$1;', [req.params.users_id])
+    console.log(allResults.rows);
+    //query to database
+    res.json(allResults.rows);
+
     // closed pool
     client.release();
 });
