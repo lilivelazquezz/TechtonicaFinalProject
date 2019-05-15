@@ -22,14 +22,14 @@ class Dashboard extends React.Component {
         //console.log(this.props)
         return (
             <div>
-                <Container>
+                <Container className="top-space">
                     <Row>
                         <Col>
-                            <h2>DASHBOARD</h2>
+                            <h1>DASHBOARD</h1>
                             <p> Hello {this.props.name}</p>
 
                             {tasks.map(task => { return <FinalTasksData data={task} parse="hh:mm" format="mma" key={task.id} /> })}
-                            <h1><Badge variant="secondary"><Link to="/report">Reports</Link></Badge> <Badge variant="secondary"><Link to="/tasksForm">Edit</Link></Badge></h1>
+                            <h2><Badge variant="secondary"><Link to="/report">Reports</Link></Badge> <Badge variant="secondary"><Link to="/tasksForm">Edit</Link></Badge></h2>
 
                             {this.renderStartButton()}
                         </Col>

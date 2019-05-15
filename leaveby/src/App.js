@@ -34,6 +34,7 @@ class App extends React.Component {
 
   componentDidMount() {
     let userData = this.state.auth.getProfile();
+    if (!userData.given_name) { return }
     let transferData = {
       name: userData.given_name,
       last_name: userData.family_name,
