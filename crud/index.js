@@ -34,13 +34,11 @@ app.get('/users/:id', async (req, res) => {
     // open pool
     const client = await pool.connect();
     var usersResults = await client.query("SELECT * FROM users WHERE id=$1", [req.params.id]);
-
     // rows is to mark a amount of rows
     res.json(usersResults.rows[0]);
     // closed pool
     client.release();
 });
-
 
 /* ====== POST ======  */
 
@@ -179,8 +177,15 @@ app.delete('/tasks/:id', async (req, res) => {
 
 app.get('/results', async (req, res) => {
     // open pool
+    let AsAuth0 = req.body.auth0_id;
+    console.log('AsAuth0', AsAuth0);
+
     const client = await pool.connect();
+    var existingUser = await client.query("SELECT * FROM users WHERE auth0_id=$1", [AsAuth0]);
+    console.log('existingUser', existingUser);
+    const userId = existingUser.userId;
     //save results of the query
+
     var allResults = await client.query
         ("SELECT * FROM results");
     //query to database
@@ -334,8 +339,6 @@ app.delete('/user_time/:id', async (req, res) => {
     // closed pool
     client.release();
 });
-
-
 
 // PORTS
 app.get('/', (req, res) =>

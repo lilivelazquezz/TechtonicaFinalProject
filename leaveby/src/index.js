@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.css';
 import * as serviceWorker from './serviceWorker';
 import Auth from './Auth';
 
@@ -15,6 +16,8 @@ window.setState = (changes) => {
 /* eslint no-restricted-globals: 0*/
 let username = auth.getProfile().given_name || "LeaveBy User";
 let userid = auth.getProfile().sub;
+//console.log('userid', userid);
+//console.log('auth.getProfile', auth.getProfile());
 
 let initialState = {
     name: username,

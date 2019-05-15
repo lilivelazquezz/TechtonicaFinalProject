@@ -13,7 +13,7 @@ import TasksForm from './TasksForm';
 import NewTaskForm from './NewTaskForm';
 import Auth from './Auth.js';
 
-const APIURL1 = '/users';
+const APIURL1 = '/users/';
 const APIURL2 = '/tasks/';
 const APIURL3 = '/results/';
 
@@ -23,7 +23,7 @@ class App extends React.Component {
     //    auth.login();
     super(props);
     this.state = {
-      users: [],
+      user: null,
       tasks: [],
       results: [],
       auth
@@ -33,47 +33,20 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch(APIURL1)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          //  console.log(result)
-          //  console.log('it worked')
-          this.setState({
-            isLoaded: true,
-            users: result
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-    // console.log(this.state.users)
-
-    fetch(APIURL3)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          //   console.log(result)
-          //   console.log('it worked')
-          this.setState({
-            isLoaded: true,
-            results: result
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-    console.log(this.state.results)
-
-    fetch(APIURL2)
+    let userData = this.state.auth.getProfile();
+    let transferData = {
+      name: userData.given_name,
+      last_name: userData.family_name,
+      email: userData.email,
+      auth0_id: userData.sub,
+    }
+    fetch('/users', {
+      method: 'post',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+      body: JSON.stringify(transferData)
+    })
       .then(res => res.json())
       .then(
         (result) => {
@@ -81,17 +54,56 @@ class App extends React.Component {
           //  console.log('it worked')
           this.setState({
             isLoaded: true,
-            tasks: result
+            user: result
           });
-          //  console.log(this.state)
+          fetch(`/results/${result.id}`)
+            .then(res => res.json())
+            .then(
+              (result) => {
+                //   console.log(result)
+                //   console.log('it worked')
+                this.setState({
+                  isLoaded: true,
+                  results: result
+                });
+              },
+              (error) => {
+                this.setState({
+                  isLoaded: true,
+                  error
+                });
+              }
+            )
+          // console.log(this.state.results)
+          fetch(APIURL2)
+            .then(res => res.json())
+            .then(
+              (result) => {
+                // console.log(result)
+                //  console.log('it worked')
+                this.setState({
+                  isLoaded: true,
+                  tasks: result
+                });
+                //  console.log(this.state)
+              },
+              (error) => {
+                this.setState({
+                  isLoaded: true,
+                  error
+                });
+              }
+            )
         },
         (error) => {
           this.setState({
             isLoaded: true,
             error
           });
+
         }
       )
+    // console.log(this.state.users)    
   }
   addTask(val) {
     console.log("ADDING TODO FROM TASK COMPONENT", val)

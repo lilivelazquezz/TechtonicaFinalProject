@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FinalTasksData from './FinalTasksData';
+import { Jumbotron, Button, Container, Col, Row, Badge } from 'react-bootstrap';
+
 
 class Dashboard extends React.Component {
     renderStartButton() {
@@ -20,14 +22,26 @@ class Dashboard extends React.Component {
         //console.log(this.props)
         return (
             <div>
-                <h2>DASHBOARD</h2>
-                <p> Hello {this.props.name}</p>
-                {tasks.map(task => { return <FinalTasksData data={task} parse="hh:mm" format="mma" key={task.id} /> })}
-                <Link to="/report">Reports</Link>
-                <Link to="/tasksForm">Edit</Link>
-                {this.renderStartButton()}
-                <button onClick={this.props.auth.logout}>Logout</button>
+                <Container>
+                    <Row>
+                        <Col>
+                            <h2>DASHBOARD</h2>
+                            <p> Hello {this.props.name}</p>
+
+                            {tasks.map(task => { return <FinalTasksData data={task} parse="hh:mm" format="mma" key={task.id} /> })}
+                            <h1><Badge variant="secondary"><Link to="/report">Reports</Link></Badge> <Badge variant="secondary"><Link to="/tasksForm">Edit</Link></Badge></h1>
+
+                            {this.renderStartButton()}
+                        </Col>
+                    </Row>
+                    <Col>
+                        <Row>
+                            <Button variant="dark" size="lg" onClick={this.props.auth.logout}>Logout</Button>
+                        </Row>
+                    </Col>
+                </Container>
             </div>
+
         )
     }
 }
