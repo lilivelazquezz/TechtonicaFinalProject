@@ -41,7 +41,7 @@ class App extends React.Component {
       email: userData.email,
       auth0_id: userData.sub,
     }
-    fetch('/users', {
+    fetch('/users/', {
       method: 'post',
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -194,9 +194,10 @@ class App extends React.Component {
             path="/report"
             component={Report}
             auth={this.props.auth}
+            user={this.state.user}
             tasks={this.state.tasks}
             results={this.state.results}
-            {...this.props}
+
           />
 
           <PrivateRoute
