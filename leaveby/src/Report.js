@@ -7,6 +7,7 @@ import moment from 'moment';
 class Report extends React.Component {
     constructor(props) {
         super(props);
+        console.log("Report.props is ", props)
         this.state = {
 
             data: {
@@ -49,6 +50,12 @@ class Report extends React.Component {
         let loopTasks = tasks.map((task, key) =>
             <li key={task.id}>{task.tasks}{task.time_set}</li>
         );
+
+        //     let loopResults = tasks.map((result, key) =>
+        //     <li key={result.id}>{result.tasks_id}{result.total_time}</li>
+        // );
+
+        // console.log(this.props.user.id);
 
         return (
             <div>

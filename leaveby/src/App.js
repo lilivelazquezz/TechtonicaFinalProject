@@ -51,7 +51,8 @@ class App extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
-          // console.log(result)
+          console.log("transferdata", transferData)
+          console.log("user", result)
           //  console.log('it worked')
           this.setState({
             isLoaded: true,
@@ -76,7 +77,8 @@ class App extends React.Component {
               }
             )
           // console.log(this.state.results)
-          fetch(APIURL2)
+          console.log("result from tasks", result.id);
+          fetch(`/tasks/${result.id}`)
             .then(res => res.json())
             .then(
               (result) => {

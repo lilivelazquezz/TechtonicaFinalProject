@@ -140,17 +140,15 @@ app.get('/tasks', async (req, res) => {
     }
 });
 
-
-
 /* ==== GET BY ID ====  */
 app.get('/tasks/:id', async (req, res) => {
     try {
         // open pool
         const client = await pool.connect();
-        var tasksResults = await client.query("SELECT * FROM tasks WHERE id=$1", [req.params.id]);
-
+        var tasksResults = await client.query("SELECT * FROM tasks WHERE users_id=$1", [req.params.id]);
+console.log("tasksResults", tasksResults);
         // rows is to mark a amount of rows
-        res.json(tasksResults.rows[0]);
+        res.json(tasksResults.rows);
         // closed pool
         client.release();
     } catch (e) {
