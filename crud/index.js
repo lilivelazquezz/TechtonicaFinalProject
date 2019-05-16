@@ -146,7 +146,7 @@ app.get('/tasks/:id', async (req, res) => {
         // open pool
         const client = await pool.connect();
         var tasksResults = await client.query("SELECT * FROM tasks WHERE users_id=$1", [req.params.id]);
-console.log("tasksResults", tasksResults);
+        console.log("tasksResults", tasksResults);
         // rows is to mark a amount of rows
         res.json(tasksResults.rows);
         // closed pool
@@ -255,7 +255,7 @@ app.get('/results/:users_id', async (req, res) => {
         const client = await pool.connect();
         //console.log("results");
         //save results of the query
-        var allResults = await client.query('SELECT U.id, R.id, T.tasks, T.users_id, R.total_time FROM users U JOIN tasks T ON T.users_id = U.id JOIN results R ON R.tasks_id = T.id WHERE users_id=$1;', [req.params.users_id])
+        var allResults = await client.query('SELECT DISTINCT T.id, U.id, R.id, T.tasks, T.users_id, R.total_time, R.created_at FROM users U JOIN tasks T ON T.users_id = U.id JOIN results R ON R.tasks_id = T.id WHERE users_id=$1 ORDER BY R.created_at DESC;', [req.params.users_id])
         console.log(allResults.rows);
         //query to database
         res.json(allResults.rows);
@@ -292,12 +292,11 @@ app.post('/results', async (req, res) => {
     try {
         // open pool
         const client = await pool.connect();
-        let AsCreatedAt = req.body.created_at;
         let AsTotalTime = req.body.total_time;
         let AsTasksId = req.body.tasks_id;
 
         //updateInfo
-        var allResults = await client.query("INSERT INTO results(created_at, total_time, tasks_id) VALUES($1, $2, $3) RETURNING *", [AsCreatedAt, AsTotalTime, AsTasksId]);
+        var allResults = await client.query("INSERT INTO results(created_at, total_time, tasks_id) VALUES(now(), $1, $2) RETURNING *", [AsTotalTime, AsTasksId]);
         res.json(allResults.rows[0]);
         // closed pool
         client.release();

@@ -35,6 +35,7 @@ class Dashboard extends React.Component {
                             <h4 className="top-space">Start your first task:</h4>
                             {this.renderStartButton()}
                         </div>
+
                             <hr></hr>
                             <div className="top-space">
                                 <Button variant="secondary" size="lg" onClick={this.props.auth.logout}>Logout</Button>
@@ -43,7 +44,6 @@ class Dashboard extends React.Component {
                     </Row>
                 </Container>
             </div>
-
         )
     }
 }

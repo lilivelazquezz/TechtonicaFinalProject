@@ -62,7 +62,7 @@ class Report extends React.Component {
                 <Container className="top-space">
                     <Row className="justify-content-md-center">
                         <Col xs={12} md={6}>
-                            <div style={{ position: "realtive", width: 600, height: 550 }}>
+                            <div style={{ position: "realtive", width: 600, height: 550 }} className="fluid">
                                 <h1>Results</h1>
                                 <ul><h4>Time set</h4>
                                     {loopTasks}
