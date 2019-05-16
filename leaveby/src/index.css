@@ -27,9 +27,31 @@ margin-top: 5%;
 }
 
 h1{  
-  font-family: 'Codystar', cursive;
+  /*font-family: 'Codystar', cursive; **/
+  font-family: 'Fredericka the Great', cursive;
   font-size: 15em;
 }
-h2{  font-family: 'Anton', sans-serif; 
+h2{ /* font-family: 'Anton', sans-serif;  */
+  font-family: 'Fredericka the Great', cursive;
   text-transform: capitalize;
+  font-size: 20em;
+}
+
+a{ color: #fff !important;
+}
+.linkColor{
+  color: black;
+}
+.digital{
+  /*font-family: 'Revalia', cursive; */
+  /*font-family: 'Offside', cursive; */
+  /* font-family: 'VT323', monospace; */
+  font-family: 'Maiden Orange', cursive;
+  font-size: 6em;
+}
+
+.taskTitle{
+  font-family: 'VT323', monospace;
+  text-transform: lowercase;
+  font-size: 4em;
 }

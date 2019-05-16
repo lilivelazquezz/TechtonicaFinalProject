@@ -10,9 +10,10 @@ class Dashboard extends React.Component {
         const firstTask = tasks.length > 0 ? tasks[0] : null;
         if (firstTask) {
             return (
-                <Link to={`/taskscreen/${firstTask.id}`}>
+             <Button>  <Link to={`/taskscreen/${firstTask.id}`} >
                     {firstTask.tasks}
                 </Link>
+                </Button> 
             );
         }
         return null;
@@ -30,7 +31,7 @@ class Dashboard extends React.Component {
 
                             {tasks.map(task => { return <FinalTasksData data={task} parse="hh:mm" format="mma" key={task.id} /> })}
                             <h2><Badge variant="secondary"><Link to="/report">Reports</Link></Badge> <Badge variant="secondary"><Link to="/tasksForm">Edit</Link></Badge></h2>
-
+                            <h4>Start your first task:</h4>
                             {this.renderStartButton()}
                         </Col>
                     </Row>
