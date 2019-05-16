@@ -8,8 +8,8 @@ export default class Main extends Component {
         return (
             <div>
                 <Container className="top-space">
-                    <Row>
-                        <Col>
+                    <Row className="justify-content-md-center">
+                        <Col xs={12} md={6}>
                             <h2> Hello {this.props.name} </h2>
                             {!this.props.auth.isAuthenticated() &&
                                 <div>

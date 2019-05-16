@@ -10,10 +10,10 @@ class Dashboard extends React.Component {
         const firstTask = tasks.length > 0 ? tasks[0] : null;
         if (firstTask) {
             return (
-             <Button>  <Link to={`/taskscreen/${firstTask.id}`} >
+                <Button>  <Link to={`/taskscreen/${firstTask.id}`} >
                     {firstTask.tasks}
                 </Link>
-                </Button> 
+                </Button>
             );
         }
         return null;
@@ -24,22 +24,22 @@ class Dashboard extends React.Component {
         return (
             <div>
                 <Container className="top-space">
-                    <Row>
-                        <Col>
+                    <Row className="justify-content-md-center">
+                        <Col xs={12} md={6}><div>
                             <h1>DASHBOARD</h1>
                             <p> Hello {this.props.name}</p>
 
                             {tasks.map(task => { return <FinalTasksData data={task} parse="hh:mm" format="mma" key={task.id} /> })}
-                            <h2><Badge variant="secondary"><Link to="/report">Reports</Link></Badge> <Badge variant="secondary"><Link to="/tasksForm">Edit</Link></Badge></h2>
-                            <h4>Start your first task:</h4>
+                            <h2><Badge variant="secondary" ><Link to="/report">Reports</Link></Badge> <Badge variant="secondary"><Link to="/tasksForm">Edit</Link></Badge></h2>
+                            <h4 className="top-space">Start your first task:</h4>
                             {this.renderStartButton()}
+                        </div>
+                            <hr></hr>
+                            <div className="top-space">
+                                <Button variant="secondary" size="lg" onClick={this.props.auth.logout}>Logout</Button>
+                            </div>
                         </Col>
                     </Row>
-                    <Col>
-                        <Row>
-                            <Button variant="dark" size="lg" onClick={this.props.auth.logout}>Logout</Button>
-                        </Row>
-                    </Col>
                 </Container>
             </div>
 

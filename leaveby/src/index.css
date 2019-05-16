@@ -1,51 +1,57 @@
 /*
-#f46245
-#55bcc4
-#ed3737
-#d8c143
+#cc33cc
+#00cccc
+#33cc33
+#cccc33
 #242942
 
-#17af78
-#048c85
-#004ac1
 */
 
 body {
   margin: 0;
-  font-family: 'Anton', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Anton', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+a{  
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
 }
 
 li  {
   list-style: none;
+  font-family: 'Roboto', sans-serif;
+  text-transform: capitalize;
 }
 
 .top-space{
-margin-top: 5%;
+  margin-top: 5%;
 }
+.top-space{
+  margin-top: 5%;
+  }
 
 h1{  
-  /*font-family: 'Codystar', cursive; **/
-  font-family: 'Fredericka the Great', cursive;
-  font-size: 15em;
+  font-family: 'VT323', monospace;
+  text-transform: lowercase;
+  font-size: 4em !important;
 }
-h2{ /* font-family: 'Anton', sans-serif;  */
-  font-family: 'Fredericka the Great', cursive;
+h2{ 
+  font-weight: 300;
   text-transform: capitalize;
   font-size: 20em;
+  font-family: 'Roboto', sans-serif;
+  
 }
 
-a{ color: #fff !important;
-}
+a{ 
+  color: #fff !important;
+} 
 .linkColor{
   color: black;
 }
 .digital{
-  /*font-family: 'Revalia', cursive; */
-  /*font-family: 'Offside', cursive; */
-  /* font-family: 'VT323', monospace; */
   font-family: 'Maiden Orange', cursive;
   font-size: 6em;
 }
@@ -55,3 +61,35 @@ a{ color: #fff !important;
   text-transform: lowercase;
   font-size: 4em;
 }
+
+
+button.nextTaskButton.btn.btn-primary{
+  font-size: 2em;
+  padding: 10px 30px;
+  background-color: #33cc33 !important;
+  font-family: 'Roboto', sans-serif;
+}
+
+button.btn.btn-primary{
+  font-size: 2em;
+  padding: 10px 30px;
+  background-color: #33cc33 !important;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+}
+
+button.btn.btn-secondary.btn-lg{
+  font-size: 1em !important;
+  padding: 10px 30px;
+  text-transform: capitalize;
+  font-family: 'Roboto', sans-serif;
+}
+
+span.badge.badge-secondary{
+  font-size: 0.5em !important;
+  padding: 10px 30px;
+  text-transform: capitalize;
+  font-family: 'Roboto', sans-serif;
+  background-color: #cc33cc;
+}
+

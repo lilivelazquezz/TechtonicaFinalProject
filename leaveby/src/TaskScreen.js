@@ -55,11 +55,11 @@ class TaskScreen extends React.Component {
       })
     }
   }
-  addResult(){
-  
+  addResult() {
+
     console.log("hello from button");
   }
- 
+
   render() {
     const tasks = this.props.tasks;
     let taskId = parseInt(this.props.match.params.id);
@@ -85,7 +85,7 @@ class TaskScreen extends React.Component {
     let realTime = "Your are over by:";
     if (this.state.count <= 0) {
       overTime = <h1>{moment.duration(new Date(-this.state.count * 1000).toISOString().substr(11, 8)).format("m:ss")}</h1>
-      
+
     } else {
       realTime = moment.duration(new Date(this.state.count * 1000).toISOString().substr(11, 8)).format("m:ss");
     }
@@ -93,19 +93,24 @@ class TaskScreen extends React.Component {
     return (
       <div>
         <Container className="top-space">
-          <h2 className="taskTitle">{found && found.tasks}</h2>
-          <h2 className="digital">
-            {this.state.message ? this.state.message : realTime}
-          </h2>
+          <Row className="justify-content-md-center">
+            <Col xs={12} md={6}>
+              <h2 className="taskTitle">{found && found.tasks}</h2>
+              <h2 className="digital">
+                {this.state.message ? this.state.message : realTime}
+              </h2>
 
-          { overTime }
+              {overTime}
 
-          <img src={glass} alt="hour glass time animation" />
+              <img src={glass} alt="hour glass time animation" />
+              <br></br>
 
-            <Button onClick={this.addResult}>{nextTask ?
-             <Link to={"/taskScreen/" + next}>NEXT</Link>
-            : <Link to="/report" >Finish</Link>
-          }  </Button> 
+              <Button className="nextTaskButton" onClick={this.addResult}>{nextTask ?
+                <Link to={"/taskScreen/" + next}>NEXT</Link>
+                : <Link to="/report" >FINISH</Link>
+              }  </Button>
+            </Col>
+          </Row>
         </Container>
       </div>
     )

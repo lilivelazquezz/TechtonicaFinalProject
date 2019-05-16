@@ -60,8 +60,8 @@ class Report extends React.Component {
         return (
             <div>
                 <Container>
-                    <Row>
-                        <Col>
+                    <Row className="justify-content-md-center">
+                        <Col xs={12} md={6}>
                             <div style={{ position: "realtive", width: 600, height: 550 }}>
                                 <h3>Results</h3>
 
