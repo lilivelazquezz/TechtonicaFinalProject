@@ -42,7 +42,13 @@ h2{
   text-transform: capitalize;
   font-size: 20em;
   font-family: 'Roboto', sans-serif;
-  
+  margin-top: 20px !important;
+}
+
+h4{
+  font-size: 1.5em !important;
+  margin-top: 40px !important;
+
 }
 
 a{ 

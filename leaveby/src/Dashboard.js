@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import FinalTasksData from './FinalTasksData';
 import { Jumbotron, Button, Container, Col, Row, Badge } from 'react-bootstrap';
 
-
 class Dashboard extends React.Component {
     renderStartButton() {
         const tasks = this.props.tasks
@@ -27,9 +26,11 @@ class Dashboard extends React.Component {
                     <Row className="justify-content-md-center">
                         <Col xs={12} md={6}><div>
                             <h1>DASHBOARD</h1>
-                            <p> Hello {this.props.name}</p>
+                            <h2> Hello {this.props.name}</h2>
 
-                            {tasks.map(task => { return <FinalTasksData data={task} parse="hh:mm" format="mma" key={task.id} /> })}
+                            <h4> These are your tasks today:</h4>
+
+                            {tasks.map(task => { return <FinalTasksData data={task} key={task.id} /> })}
                             <h2><Badge variant="secondary" ><Link to="/report">Reports</Link></Badge> <Badge variant="secondary"><Link to="/tasksForm">Edit</Link></Badge></h2>
                             <h4 className="top-space">Start your first task:</h4>
                             {this.renderStartButton()}
