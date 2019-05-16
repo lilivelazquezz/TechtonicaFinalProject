@@ -33,14 +33,14 @@ class NewTaskForm extends React.Component {
                     defaultValue={this.state.tasks}
                     onChange={this.handleInputChange}
                 />
-                <label >Set Time</label>
+                <label>Set Minutes</label>
                 <input
                     name="time_set"
                     type="number"
                     min="1" max="60"
                     defaultValue={this.state.time_set}
                     onChange={this.handleInputChange}
-                /> minutes
+                />
                 <label >Ranking</label>
                 <input
                     name="ranking"
@@ -49,7 +49,7 @@ class NewTaskForm extends React.Component {
                     defaultValue={this.state.ranking}
                     onChange={this.handleInputChange}
                 />
-                <button> Add New Task</button>
+                <button class="addTask"> Add New Task</button>
             </form>
         )
     }

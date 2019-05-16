@@ -10,7 +10,7 @@ export default class Main extends Component {
                 <Container className="top-space">
                     <Row className="justify-content-md-center">
                         <Col xs={12} md={6}>
-                            <h2> Hello {this.props.name} </h2>
+                            <h1> Hello {this.props.name} </h1>
                             {!this.props.auth.isAuthenticated() &&
                                 <div>
                                     <h3>Please login</h3>

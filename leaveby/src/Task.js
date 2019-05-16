@@ -19,9 +19,9 @@ class Task extends React.Component {
 
         return (
             <div>
-                <button>Edit</button>
-                <button onClick={this.handleDelete}> x </button>
-                <button > Alarm </button>
+                <button class="editTask">Edit</button>
+                <button onClick={this.handleDelete} class="deleteTask"> x </button>
+                <button class="alarmTask"> Alarm </button>
                 <li>{this.props.data.tasks} {this.props.data.time_set} {this.props.data.ranking}</li>
             </div>
         )

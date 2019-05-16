@@ -103,4 +103,67 @@ span.badge.badge-secondary{
   font-family: 'Roboto', sans-serif;
   background-color: #cc33cc;
 }
+/* =====  FORM STYLES ===== */
+label{
+  margin-right: 2px;
+}
+input{
+  margin-right: 7px !important;
+}
 
+button{
+/*  background-color: #33cc33 !important;
+  border-style: solid;
+  border-width: 0px;
+  padding: 1px 7px 2px; */
+
+}
+
+.addTask{
+  background-color: #33cc33 !important;
+  border-style: solid;
+  border-width: 0px;
+  padding: 7px 15px;
+  color: #fff;
+  margin-top: 10px;
+  border-radius: 0.25rem;
+}
+
+.editTask{
+  color: #0099cc !important;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #0099cc!important; 
+  padding: 7px 15px;
+  background-color: #fff;
+  margin-top: 10px;
+  border-radius: 0.25rem;
+  margin-right: 10px;
+}
+
+.deleteTask{
+  color:#cc33cc!important;
+  border-style: solid;
+  border-width: 2px;
+  border-color:#cc33cc!important; 
+  padding: 7px 15px;
+  background-color: #fff;
+  margin-top: 10px;
+  border-radius: 0.25rem;
+  margin-right: 10px;
+}
+
+.alarmTask{
+  color:#cccc33 !important;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #cccc33;
+  padding: 7px 15px;
+  background-color: #fff;
+  margin-top: 10px;
+  border-radius: 0.25rem;
+  margin-right: 10px;
+  /*opacity: 0.5;
+  filter: alpha(opacity=50);
+  */
+}
