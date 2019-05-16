@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FinalTasksData from './FinalTasksData';
-import { Jumbotron, Button, Container, Col, Row, Badge } from 'react-bootstrap';
+import { Button, Container, Col, Row, Badge } from 'react-bootstrap';
 
 class Dashboard extends React.Component {
     renderStartButton() {
@@ -28,7 +28,7 @@ class Dashboard extends React.Component {
                             <h1>DASHBOARD</h1>
                             <h2> Hello {this.props.name}</h2>
 
-                            <h4> These are your tasks today:</h4>
+                            <h4>Your tasks today:</h4>
 
                             {tasks.map(task => { return <FinalTasksData data={task} key={task.id} /> })}
                             <h2><Badge variant="secondary" ><Link to="/report">Reports</Link></Badge> <Badge variant="secondary"><Link to="/tasksForm">Edit</Link></Badge></h2>

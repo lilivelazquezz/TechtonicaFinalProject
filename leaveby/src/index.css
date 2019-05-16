@@ -4,7 +4,6 @@
 #33cc33
 #cccc33
 #242942
-
 */
 
 body {
@@ -18,19 +17,26 @@ a{
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
 }
+ul{
+  text-align: left !important;
+  width: 207px;
+  margin-left: 50px;
+}
 
 li  {
   list-style: none;
   font-family: 'Roboto', sans-serif;
   text-transform: capitalize;
+  text-align: left !important;
+  width: 207px;
+  margin:auto; 
 }
 
 .top-space{
   margin-top: 5%;
+  text-align: center !important;
 }
-.top-space{
-  margin-top: 5%;
-  }
+
 
 h1{  
   font-family: 'VT323', monospace;
@@ -48,7 +54,6 @@ h2{
 h4{
   font-size: 1.5em !important;
   margin-top: 40px !important;
-
 }
 
 a{ 
@@ -67,7 +72,6 @@ a{
   text-transform: lowercase;
   font-size: 4em;
 }
-
 
 button.nextTaskButton.btn.btn-primary{
   font-size: 2em;
@@ -93,7 +97,8 @@ button.btn.btn-secondary.btn-lg{
 
 span.badge.badge-secondary{
   font-size: 0.5em !important;
-  padding: 10px 30px;
+  padding: 15px 30px;
+  font-weight: 500 !important;
   text-transform: capitalize;
   font-family: 'Roboto', sans-serif;
   background-color: #cc33cc;

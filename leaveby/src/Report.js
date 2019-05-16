@@ -48,7 +48,7 @@ class Report extends React.Component {
         // const user = this.props.user.id
 
         let loopTasks = tasks.map((task, key) =>
-            <li key={task.id}>{task.tasks}{task.time_set}</li>
+            <li key={task.id}><bold>{task.tasks}</bold> - {moment.duration(task.time_set).format("m:ss")}</li>
         );
 
         //     let loopResults = tasks.map((result, key) =>
@@ -59,21 +59,26 @@ class Report extends React.Component {
 
         return (
             <div>
-                <Container>
+                <Container className="top-space">
                     <Row className="justify-content-md-center">
                         <Col xs={12} md={6}>
                             <div style={{ position: "realtive", width: 600, height: 550 }}>
-                                <h3>Results</h3>
-
-                                {loopTasks}
-
+                                <h1>Results</h1>
+                                <ul><h4>Time set</h4>
+                                    {loopTasks}
+                                </ul>
                                 <Line
                                     options={{
                                         responsive: true
                                     }}
                                     data={this.state.data} />
-                                <Link to="dashboard">Profile</Link>
+                                <h2><Badge variant="secondary" > <Link to="dashboard">Profile</Link></Badge>   </h2>
+                                <hr></hr>
+                                <div className="top-space">
+                                    <Button variant="secondary" size="lg" onClick={this.props.auth.logout}>Logout</Button>
+                                </div>
                             </div>
+
                         </Col>
                     </Row>
                 </Container>
