@@ -30,6 +30,7 @@ class App extends React.Component {
     }
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+    this.updateTask = this.updateTask.bind(this);
   }
 
   componentDidMount() {
@@ -124,6 +125,11 @@ class App extends React.Component {
         this.setState({ tasks: [...this.state.tasks, newTask] })
       })
   }
+  updateTask(task, taskId) {
+    // fill me in
+    this.setState({editingTasksId: task }) 
+
+  }
 
   deleteTask(id) {
     const deleteURL = APIURL2 + id;
@@ -217,6 +223,7 @@ class App extends React.Component {
             tasks={this.state.tasks}
             {...this.props}
             deleteTask={this.deleteTask}
+            updateTask={this.updateTask}
           />
         </Switch>
       </Router>

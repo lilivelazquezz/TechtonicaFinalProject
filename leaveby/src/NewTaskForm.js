@@ -1,4 +1,6 @@
 import React from 'react';
+import { stat } from 'fs';
+import { Button, Container, Col, Row, Badge } from 'react-bootstrap';
 
 class NewTaskForm extends React.Component {
     constructor(props) {
@@ -16,10 +18,28 @@ class NewTaskForm extends React.Component {
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        if (this.state.id) {
-            this.props.updateTask(this.state); // check with thee other form  updateEvent
+        if (this.props.editingTask !== undefined) {
+            this.props.updateTask(this.state); // check with the other form updateEvent
+
         } else {
             this.props.addTask(this.state); // AddItem
+            this.setState( { tasks: '', time_set: '', ranking: '' }); //added to set the input clear after adding the value
+        }
+    }
+// get a new state from props. The props just changed.
+    static getDerivedStateFromProps(props, state) {
+        const editingTask = props.editingTask;
+        console.log(editingTask);
+        if (editingTask) {
+            return {
+                tasks: editingTask.tasks,
+                time_set: editingTask.time_set.split(':').map(val => parseInt(val, 10))[1],
+                ranking: editingTask.ranking
+            };
+        } else {
+            //return state;
+
+            return null;
         }
     }
     render() {
@@ -32,6 +52,7 @@ class NewTaskForm extends React.Component {
                     placeholder="New Task"
                     defaultValue={this.state.tasks}
                     onChange={this.handleInputChange}
+                    value={this.state.tasks}
                 />
                 <label>Set Minutes</label>
                 <input
@@ -40,6 +61,7 @@ class NewTaskForm extends React.Component {
                     min="1" max="60"
                     defaultValue={this.state.time_set}
                     onChange={this.handleInputChange}
+                    value={this.state.time_set}
                 />
                 <label >Ranking</label>
                 <input
@@ -48,8 +70,10 @@ class NewTaskForm extends React.Component {
                     min="1" max="15"
                     defaultValue={this.state.ranking}
                     onChange={this.handleInputChange}
+                    value={this.state.ranking}
                 />
-                <button class="addTask"> Add New Task</button>
+                <button class="addTask"> submit </button>
+
             </form>
         )
     }
