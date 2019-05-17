@@ -24,7 +24,8 @@ class Dashboard extends React.Component {
             <div>
                 <Container className="top-space">
                     <Row className="justify-content-md-center">
-                        <Col xs={12} md={6}><div>
+                        <Col xs={12} md={6}>
+                        <div>
                             <h1>DASHBOARD</h1>
                             <h2> Hello {this.props.name}</h2>
 
@@ -35,7 +36,6 @@ class Dashboard extends React.Component {
                             <h4 className="top-space">Start your first task:</h4>
                             {this.renderStartButton()}
                         </div>
-
                             <hr></hr>
                             <div className="top-space">
                                 <Button variant="secondary" size="lg" onClick={this.props.auth.logout}>Logout</Button>

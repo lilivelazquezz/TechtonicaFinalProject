@@ -58,8 +58,8 @@ class TaskScreen extends React.Component {
   addResult() {
     let time = moment().startOf("day").seconds(this.state.count).format("HH:mm:ss");
 
-    console.log("hello from button");
-    console.log("from button ", time);
+    //console.log("hello from button");
+   // console.log("from button ", time);
     fetch('/results/', {
       method: 'post',
       headers: new Headers({
@@ -92,14 +92,14 @@ class TaskScreen extends React.Component {
     var nextTask = this.props.tasks[next];
 
     let overTime = "";
-    let realTime = "Your are over by:";
+    let realTime = "Your are over by: ";
     let time = Math.abs(this.state.taskTime - this.state.count);
 
     if (this.state.count >= this.state.taskTime) {
-      overTime = <h1>{moment().startOf("day").seconds(time).format("m:ss")}</h1>
+      overTime = <h2 className="digital2">{moment().startOf("day").seconds(time).format("m:ss")}</h2>
 
     } else {
-      realTime = moment().startOf("day").seconds(time).format("m:ss");
+      realTime = <h2 className="digital">{moment().startOf("day").seconds(time).format("m:ss")}</h2>;
     }
 
     return (
@@ -108,7 +108,7 @@ class TaskScreen extends React.Component {
           <Row className="justify-content-md-center">
             <Col xs={12} md={6}>
               <h2 className="taskTitle">{found && found.tasks}</h2>
-              <h2 className="digital">
+              <h2>
                 {this.state.message ? this.state.message : realTime}
               </h2>
 

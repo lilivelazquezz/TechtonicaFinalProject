@@ -59,14 +59,25 @@ h4{
 a{ 
   color: #fff !important;
 } 
+.logo-front{
+  width:50%;
+  height: 50%;
+}
 .linkColor{
   color: black;
 }
 .digital{
   font-family: 'Maiden Orange', cursive;
-  font-size: 6em;
+  font-size: 3em;
 }
-
+.digital2{
+  font-family: 'Maiden Orange', cursive;
+  font-size: 6em;
+  color: #cc33cc;
+}
+.warning{
+  color: #cc33cc;
+}
 .taskTitle{
   font-family: 'VT323', monospace;
   text-transform: lowercase;
