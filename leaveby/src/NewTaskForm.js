@@ -1,6 +1,5 @@
 import React from 'react';
 import { stat } from 'fs';
-import { Button, Container, Col, Row, Badge } from 'react-bootstrap';
 
 class NewTaskForm extends React.Component {
     constructor(props) {
@@ -19,11 +18,10 @@ class NewTaskForm extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         if (this.props.editingTask !== undefined) {
-            this.props.updateTask(this.state); // check with the other form updateEvent
+            this.props.updateTask(this.state); // check with thee other form  updateEvent
 
         } else {
             this.props.addTask(this.state); // AddItem
-            this.setState( { tasks: '', time_set: '', ranking: '' }); //added to set the input clear after adding the value
         }
     }
 // get a new state from props. The props just changed.
@@ -37,11 +35,10 @@ class NewTaskForm extends React.Component {
                 ranking: editingTask.ranking
             };
         } else {
-            //return state;
-
-            return null;
+            return state;
         }
     }
+
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
@@ -72,7 +69,9 @@ class NewTaskForm extends React.Component {
                     onChange={this.handleInputChange}
                     value={this.state.ranking}
                 />
-                <button class="addTask"> submit </button>
+                <button class="addTask" onClick={this.handleSubmit}> submit </button>
+
+             
 
             </form>
         )
