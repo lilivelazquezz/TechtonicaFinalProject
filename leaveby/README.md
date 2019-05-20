@@ -1,3 +1,32 @@
+## Leave By
+
+A web app that allows tracking of the real-time of tasks to help you be mindful of the time and create better habits.
+
+### Tools and Technologies:
+
+• BACKEND: Node / Express / Javascript <br>
+• FRONT-END: React, React-bootstrap / React Router / react-moment / jwt-decode / chart.js <br>
+• DATABASE: PostgreSQL / foreign keys <br> 
+• AUTHENTICATION & AUTHORIZATION: Auth0 / JWT (Jason Web Tokens) <br>
+
+### Features
+• Google Login with Auth0.<br>
+• Current User dashboard profile.<br>
+• Dashboard that displays all the tasks.<br>
+• Custom task with a timer.<br>
+• Dynamic page generator for each task.<br>
+• Report of tracked time for each task.<br>
+
+
+### Pages:
+• Login
+• Dashboard
+• Edit form
+• Dynamic page per tasks
+• Report
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
