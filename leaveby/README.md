@@ -19,11 +19,11 @@ A web app that allows tracking of the real-time of tasks to help you be mindful 
 
 
 ### Pages:
-• Login
-• Dashboard
-• Edit form
-• Dynamic page per tasks
-• Report
+• Login <br>
+• Dashboard <br>
+• Edit form <br>
+• Dynamic page per tasks <br>
+• Report <br>
 
 
 
