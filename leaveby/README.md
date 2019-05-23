@@ -25,6 +25,11 @@ A web app that allows tracking of the real-time of tasks to help you be mindful 
 • Dynamic page per tasks <br>
 • Report <br>
 
+### Future features:
+• Profile picture - API<br>
+https://www.npmjs.com/package/@dicebear/avatars-male-sprites <br>
+https://www.npmjs.com/package/@dicebear/avatars-female-sprites  <br>
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
