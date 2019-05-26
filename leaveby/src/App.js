@@ -12,10 +12,12 @@ import TaskScreen from './TaskScreen';
 import TasksForm from './TasksForm';
 import NewTaskForm from './NewTaskForm';
 import Auth from './Auth.js';
+import avatar from './components/avatar'
 
 const APIURL1 = '/users/';
 const APIURL2 = '/tasks/';
 const APIURL3 = '/results/';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -30,11 +32,12 @@ class App extends React.Component {
     }
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+    this.selectAvatarCallback = this.selectAvatarCallback.bind(this);
   }
 
   componentDidMount() {
     let userData = this.state.auth.getProfile();
-    if (!userData.given_name) { return }
+    if (!userData.given_name) { return } 
     let transferData = {
       name: userData.given_name,
       last_name: userData.family_name,
@@ -139,6 +142,10 @@ class App extends React.Component {
       });
   }
 
+  selectAvatarCallback(avatar){
+    this.setState({avatar})
+  }
+
   // console.log(this.state.results)
   render() {
     return (
@@ -219,6 +226,19 @@ class App extends React.Component {
             tasks={this.state.tasks}
             {...this.props}
             deleteTask={this.deleteTask}
+          />
+
+        <PrivateRoute
+            path="/avatar"
+            component={avatar}
+            selectAvatarCallback = {this.selectAvatarCallback}
+            auth={this.props.auth}
+            tasks={this.state.tasks}
+            user_info ={this.state.user}
+            
+            {...this.props}
+        
+      
           />
         </Switch>
       </Router>
