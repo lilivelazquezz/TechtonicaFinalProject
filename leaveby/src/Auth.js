@@ -1,7 +1,7 @@
 /* eslint no-restricted-globals: 0*/
 import auth0 from "auth0-js";
 import jwtDecode from "jwt-decode";
-const LOGIN_SUCESS_PAGE = "/dashboard";
+let LOGIN_SUCESS_PAGE = "/dashboard";
 const LOGIN_FALURE_PAGE = "/"
 
 export default class Auth {
@@ -28,12 +28,13 @@ export default class Auth {
                 localStorage.setItem("id_token", authResults.idToken);
                 localStorage.setItem("expires_at", expiresAt);
                 location.hash = "";
+                
                 let userData = this.getProfile();
                 let transferData = {
                     name: userData.given_name,
                     last_name: userData.family_name,
                     email: userData.email,
-                    auth0_id: userData.sub,
+                    auth0_id: userData.sub
                 }
                 fetch('/users', {
                     method: 'post',
