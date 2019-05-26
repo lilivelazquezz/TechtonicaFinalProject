@@ -34,6 +34,8 @@ export default class Auth {
                     last_name: userData.family_name,
                     email: userData.email,
                     auth0_id: userData.sub,
+                    avatar:`https://avatars.dicebear.com/v2/female/${userData.given_name}.svg`
+
                 }
                 fetch('/users', {
                     method: 'post',

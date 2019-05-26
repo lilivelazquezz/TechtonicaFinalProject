@@ -40,6 +40,7 @@ class App extends React.Component {
       last_name: userData.family_name,
       email: userData.email,
       auth0_id: userData.sub,
+      avatar:`https://avatars.dicebear.com/v2/female/${userData.given_name}.svg`
     }
     fetch('/users/', {
       method: 'post',
@@ -63,7 +64,7 @@ class App extends React.Component {
             .then(
               (result) => {
                 //   console.log(result)
-                //   console.log('it worked')
+                  console.log('it worked')
                 this.setState({
                   isLoaded: true,
                   results: result
@@ -166,6 +167,7 @@ class App extends React.Component {
             component={Dashboard}
             auth={this.props.auth}
             tasks={this.state.tasks}
+            user_info ={this.state.user}
             {...this.props}
           />
           <PrivateRoute

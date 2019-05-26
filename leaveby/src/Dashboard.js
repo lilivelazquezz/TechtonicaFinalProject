@@ -19,6 +19,10 @@ class Dashboard extends React.Component {
     }
     render() {
         const tasks = this.props.tasks
+        let avatar;
+        if (this.props.user_info){
+            avatar=this.props.user_info.avatar
+        }
         //console.log(this.props)
         return (
             <div>
@@ -27,6 +31,7 @@ class Dashboard extends React.Component {
                         <Col xs={12} md={6}>
                         <div>
                             <h1>DASHBOARD</h1>
+                            <img style={{"padding":"5px", "width":"25%"}} src={avatar} alt={'my avatar'}/>
                             <h2> Hello {this.props.name}</h2>
 
                             <h4>Your tasks today:</h4>

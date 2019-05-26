@@ -60,6 +60,7 @@ app.post('/users', async (req, res) => {
         let AsLastName = req.body.last_name;
         let AsEmail = req.body.email;
         let AsAuth0 = req.body.auth0_id;
+        let Avatar = req.body.avatar;
 
         var existingUser = await client.query("SELECT * FROM users WHERE auth0_id=$1", [AsAuth0]);
         if (existingUser.rows && existingUser.rows.length > 0) {
@@ -69,7 +70,7 @@ app.post('/users', async (req, res) => {
             client.release();
         } else {
             //updateInfo
-            var usersResults = await client.query("INSERT INTO users(name, last_name, email, auth0_id) VALUES($1, $2, $3, $4) RETURNING *", [AsName, AsLastName, AsEmail, AsAuth0]);
+            var usersResults = await client.query("INSERT INTO users(name, last_name, email, auth0_id, avatar) VALUES($1, $2, $3, $4, $5) RETURNING *", [AsName, AsLastName, AsEmail, AsAuth0, Avatar]);
             res.json(usersResults.rows[0]);
             // closed pool
             client.release();
