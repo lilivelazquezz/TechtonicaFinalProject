@@ -46,6 +46,11 @@ REFERENCES tasks(id)
 
 INSERT INTO results( created_at, total_time, tasks_id)
 VALUES ('2019-04-30T01:39:42.042Z', '00:20:30', 1);
+VALUES ('2019-04-30T01:45:42.042Z', '00:20:30', 2);
+VALUES ('2019-04-30T01:55:42.042Z', '00:20:30', 3);
+
+INSERT INTO results( created_at, total_time, tasks_id)
+VALUES ('2019-04-30T02:00:42.042Z', '00:5:00', 4);
 
 SELECT * FROM results;
 
@@ -102,4 +107,61 @@ WHERE  users.id =2;
 
 ///
 alter table users add column avatar VARCHAR;
+
+
+DROP TABLE users;
+
+
+SELECT results.total_time,results.tasks_id,
+tasks.tasks
+FROM results,tasks
+WHERE  tasks.id = tasks_id;
+
+
+SELECT results.id, tasks.tasks, results.total_time
+FROM results
+INNER JOIN tasks
+ON results.tasks_id=tasks.id;
+
+
+SELECT results.id, tasks.tasks, tasks.users_id, results.total_time
+FROM results
+INNER JOIN tasks
+ON results.tasks_id=tasks.id
+WHERE tasks.users_id = users.id;
+
+
+SELECT U.id, R.id, T.tasks, T.users_id, R.total_time
+  FROM users U 
+  JOIN tasks T ON T.users_id = U.id 
+  JOIN results R ON R.tasks_id = T.id;
+
+
+
+
+update tasks set time_set = '00:05:00' WHERE id = 2;
+update tasks set time_set = '00:03:00' WHERE id = 3;
+update tasks set time_set = '00:04:00' WHERE id = 4;
+update tasks set time_set = '00:02:00' WHERE id = 8;
+update tasks set tasks = 'meditate' WHERE id = 9; 
+update tasks set time_set = '00:02:00' WHERE id = 8;  
+update tasks set time_set = '00:03:00' WHERE id = 9;  
+update tasks set tasks = 'Drink Coffee' WHERE id = 8; 
+
+DELETE FROM tasks WHERE id= 9;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

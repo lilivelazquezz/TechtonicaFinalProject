@@ -43,12 +43,12 @@ class Report extends React.Component {
         console.log(tasks);
 
         const results = this.props.results
-        console.log(results);
+        console.log("results", results);
 
         // const user = this.props.user.id
 
         let loopTasks = tasks.map((task, key) =>
-            <li key={task.id}><bold>{task.tasks}</bold> - {moment.duration(task.time_set).format("m:ss")}</li>
+            <li key={task.id}><strong>{task.tasks}</strong> - {moment.duration(task.time_set).format("m:ss")}</li>
         );
 
         //     let loopResults = tasks.map((result, key) =>
@@ -72,7 +72,8 @@ class Report extends React.Component {
                                         responsive: true
                                     }}
                                     data={this.state.data} />
-                                <h2><Badge variant="secondary" > <Link to="dashboard">Profile</Link></Badge>   </h2>
+                                <h2><Badge variant="secondary" > <Link to="dashboard">Profile</Link></Badge>   
+                                </h2>
                                 <hr></hr>
                                 <div className="top-space">
                                     <Button variant="secondary" size="lg" onClick={this.props.auth.logout}>Logout</Button>

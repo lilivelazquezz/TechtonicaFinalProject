@@ -92,7 +92,7 @@ class TaskScreen extends React.Component {
     var nextTask = this.props.tasks[next];
 
     let overTime = "";
-    let realTime = "Your are over by: ";
+    let realTime = "You When Over by: ";
     let time = Math.abs(this.state.taskTime - this.state.count);
 
     if (this.state.count >= this.state.taskTime) {
