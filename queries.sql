@@ -6,7 +6,8 @@ CREATE TABLE users(
 id SERIAL PRIMARY KEY,
 name VARCHAR(15),
 last_name VARCHAR(15),
-email VARCHAR(50)
+email VARCHAR(50),
+auth0_id text NOT NULL UNIQUE
 );
 
 
@@ -99,16 +100,6 @@ FROM users,tasks
 WHERE  users.id =2;
 
 
-ALTER TABLE users
-ADD auth0_id varchar(50);
+///
+alter table users add column avatar VARCHAR;
 
-
-CREATE TABLE users(
-id SERIAL PRIMARY KEY,
-name VARCHAR(15),
-last_name VARCHAR(15),
-email VARCHAR(50),
-auth0_id text NOT NULL UNIQUE
-);
-
-DROP TABLE users;
